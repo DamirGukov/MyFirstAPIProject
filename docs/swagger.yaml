@@ -1,0 +1,120 @@
+basePath: /
+definitions:
+  server.Item:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: integer
+    type: object
+info:
+  contact: {}
+  description: This my first Project
+  termsOfService: http://swagger.io/terms/
+  title: MyBestAPIProject
+  version: "1.0"
+paths:
+  /items:
+    get:
+      consumes:
+      - application/json
+      description: Get a list of all items
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/server.Item'
+            type: array
+      summary: Get all items
+      tags:
+      - items
+    post:
+      consumes:
+      - application/json
+      description: Create a new item with the specified name and price
+      parameters:
+      - description: Item parameters
+        in: body
+        name: params
+        required: true
+        schema:
+          $ref: '#/definitions/server.Item'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/server.Item'
+      summary: Create a new item
+  /items/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete an item with the specified ID
+      parameters:
+      - description: Item ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete an item by ID
+      tags:
+      - items
+    get:
+      consumes:
+      - application/json
+      description: Get an item with the specified ID
+      parameters:
+      - description: Item ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.Item'
+      summary: Get an item by ID
+      tags:
+      - items
+    put:
+      consumes:
+      - application/json
+      description: Update an item with the specified ID and new name and price
+      parameters:
+      - description: Item ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Updated item object
+        in: body
+        name: item
+        required: true
+        schema:
+          $ref: '#/definitions/server.Item'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/server.Item'
+      summary: Update an item by ID
+      tags:
+      - items
+swagger: "2.0"
