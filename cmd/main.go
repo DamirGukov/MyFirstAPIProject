@@ -10,9 +10,7 @@ import (
 // @version         1.0
 // @description     This my first Project
 // @termsOfService  http://swagger.io/terms/
-
 // @BasePath /
-
 func main() {
 	docs.SwaggerInfo.Host = ""
 
